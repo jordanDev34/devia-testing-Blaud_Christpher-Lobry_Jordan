@@ -36,3 +36,15 @@ Je souhaite récupérer la liste de tous les vaccins existants dans la base de d
 ### Critères d'acceptation :
 - Le système doit récupérer l'ensemble des vaccins existant et me le renvoyer dans un tableau
 - Si aucun vaccin n'est présent dans la base de données, le système me renvoi un tableau vide
+
+--
+
+## Récupérer un vaccin (GET /vaccines/vaccin/:id)
+
+**En tant qu'administrateur,**  
+Je souhaite récupérer un vaccin en particulier
+
+### Critères d'acceptation :
+- Le système doit récupérer le vaccin correspondant à l'`ID` fourni en paramètre de la requête.
+- Si l'`ID` du vaccin n'existe pas, une erreur `404` doit être renvoyée.
+- Si le vaccin a été trouvé, le système le retourne dans la réponse de la requête.

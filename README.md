@@ -39,7 +39,7 @@ Je souhaite récupérer la liste de tous les vaccins existants dans la base de d
 
 --
 
-## Récupérer un vaccin (GET /vaccines/vaccin/:id)
+## Récupérer un vaccin (GET /vaccines/vaccine/:id)
 
 **En tant qu'administrateur,**  
 Je souhaite récupérer un vaccin en particulier
@@ -48,3 +48,16 @@ Je souhaite récupérer un vaccin en particulier
 - Le système doit récupérer le vaccin correspondant à l'`ID` fourni en paramètre de la requête.
 - Si l'`ID` du vaccin n'existe pas, une erreur `404` doit être renvoyée.
 - Si le vaccin a été trouvé, le système le retourne dans la réponse de la requête.
+
+--
+
+## Mettre à jour un vaccin (GET /vaccines/vaccine/:id)
+
+**En tant qu'administrateur,**  
+Je veux mettre à jour les informations d'un vaccin, Afin de pouvoir modifier ses données si nécessaire.
+
+### Critères d'acceptation :
+- Le système met à jour le vaccin sur la base de l'ID fourni en paramètre et du corps de la requête.
+- Si l'`ID` du vaccin n'existe pas, une erreur `404` doit être renvoyée.
+- Si les données saisies sont invalides, le système renvoie une erreur 400
+- Si le vaccin est trouvé et que les données saisies sont valides, le vaccin est mis à jour et les modifications sont visibles dans la base de données

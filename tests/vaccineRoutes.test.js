@@ -23,4 +23,16 @@ describe('Vaccine routes', () => {
     expect(res.body).to.have.property('id');
     expect(res.body.name).to.equal('SPL.45');
   });
+
+  it('should delete a vaccine', async () => {
+    const vaccine = await request.post('/vaccines').send({
+      name: 'SPL39',
+    });
+
+    const res = await request.delete(`/vaccines/vaccine/${vaccine.body.id}`);
+    expect(res.status).to.equal(204);
+
+    const findRes = await request.get(`/vaccines/${vaccine.body.id}`);
+    expect(findRes.status).to.equal(404);
+  });
 })

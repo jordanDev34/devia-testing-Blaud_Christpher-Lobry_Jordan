@@ -14,7 +14,7 @@ Afin de le rendre disponible pour les utilisateurs avec toutes ses informations 
 
 ---
 
-## Supprimer un vaccin (DELETE /vaccines/vaccin/:id)
+## Supprimer un vaccin (DELETE /vaccines/vaccine/:id)
 
 **En tant qu'administrateur,**  
 Je souhaite supprimer un vaccin,  

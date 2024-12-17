@@ -24,6 +24,14 @@ describe('Vaccine routes', () => {
     expect(res.body.name).to.equal('SPL.45');
   });
 
+  it('should return an array of vaccines', async () => {
+    const res = await request.get('/vaccines');
+
+    expect(res.status).to.equal(200);
+    expect(res.body).to.be.an('array');
+    expect(res.body.length).to.equal(1);
+  })
+
   it('should delete a vaccine', async () => {
     const vaccine = await request.post('/vaccines').send({
       name: 'SPL39',

@@ -37,7 +37,7 @@ exports.updateVaccine = async (req, res) => {
   try {
     const { name } = req.body;
 
-    if (typeof name !== 'string') return res.status(403).json({ error: 'Data is invalid' });
+    if (typeof name !== 'string') return res.status(400).json({ error: 'Data is invalid' });
 
     const vaccine = await Vaccine.findByPk(req.params.id);
 

@@ -30,7 +30,7 @@ describe('Vaccine routes', () => {
     expect(res.status).to.equal(200);
     expect(res.body).to.be.an('array');
     expect(res.body.length).to.equal(1);
-  })
+  });
 
   it('should return a vaccine', async () => {
     const vaccine = await request.post('/vaccines').send({
@@ -42,7 +42,33 @@ describe('Vaccine routes', () => {
     expect(res.status).to.equal(200);
     expect(res.body).to.have.property('id', vaccine.body.id);
     expect(res.body.name).to.equal('SPL.45');
-  })
+  });
+
+  it('should update a vaccine', async () => {
+      const vaccine = await request.post('/vaccines').send({
+          name: 'SPL.45'
+      });
+
+      const res = await request.put(`/vaccines/vaccine/${vaccine.body.id}`).send({
+          name: 'SPL.30',
+      });
+
+      expect(res.status).to.equal(200);
+      expect(res.body.name).to.equal('SPL.30');
+  });
+
+  it('should return an error during update vaccine if data is invalid', async () => {
+      const vaccine = await request.post('/vaccines').send({
+          name: 'SPL.45'
+      });
+
+      const res = await request.put(`/vaccines/vaccine/${vaccine.body.id}`).send({
+          name: 1234,
+      });
+
+      expect(res.status).to.equal(400);
+      expect(res.body.error).to.equal('Data is invalid');
+  });
 
   it('should delete a vaccine', async () => {
     const vaccine = await request.post('/vaccines').send({
@@ -55,4 +81,4 @@ describe('Vaccine routes', () => {
     const findRes = await request.get(`/vaccines/${vaccine.body.id}`);
     expect(findRes.status).to.equal(404);
   });
-})
+});

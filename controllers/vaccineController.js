@@ -33,6 +33,24 @@ exports.getVaccineById = async (req, res) => {
   }
 };
 
+exports.updateVaccine = async (req, res) => {
+  try {
+    const { name } = req.body;
+
+    if (typeof name !== 'string') return res.status(403).json({ error: 'Data is invalid' });
+
+    const vaccine = await Vaccine.findByPk(req.params.id);
+
+    if (!vaccine) return res.status(404).json({ error: 'Vaccine not found' });
+
+    await vaccine.update({ name });
+
+    res.json(vaccine);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
 exports.deleteVaccine = async (req, res) => {
   try {
       const vaccine = await Vaccine.findByPk(req.params.id);

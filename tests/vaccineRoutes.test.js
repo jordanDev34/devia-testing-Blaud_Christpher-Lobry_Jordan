@@ -32,6 +32,18 @@ describe('Vaccine routes', () => {
     expect(res.body.length).to.equal(1);
   })
 
+  it('should return a vaccine', async () => {
+    const vaccine = await request.post('/vaccines').send({
+        name: 'SPL.45'
+    });
+
+    const res = await request.get(`/vaccines/vaccine/${vaccine.body.id}`);
+
+    expect(res.status).to.equal(200);
+    expect(res.body).to.have.property('id', vaccine.body.id);
+    expect(res.body.name).to.equal('SPL.45');
+  })
+
   it('should delete a vaccine', async () => {
     const vaccine = await request.post('/vaccines').send({
       name: 'SPL39',

@@ -13,6 +13,15 @@ exports.createVaccine = async (req, res) => {
   }
 };
 
+exports.getAllVaccines = async (req, res) => {
+  try {
+    const vaccines = await Vaccine.findAll();    
+    res.status(200).json(vaccines);
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
+};
+
 exports.deleteVaccine = async (req, res) => {
   try {
       const vaccine = await Vaccine.findByPk(req.params.id);

@@ -32,4 +32,18 @@ describe('Campaign routes', () => {
 
     expect(res.body.location).to.equal('Paris');
   });
+
+  it('should delete a campaign', async () => {
+    const campaign = await request.post('/campaigns').send({
+      name: 'Petit depistage',
+      eventDate: '2024-11-21',
+      location: 'Marseille'
+    });
+
+    const res = await request.delete(`/campaigns/campaign/${campaign.body.id}`);
+    expect(res.status).to.equal(204);
+
+    const findRes = await request.get(`/campaigns/${campaign.body.id}`);
+    expect(findRes.status).to.equal(404);
+  });
 });

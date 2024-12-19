@@ -79,3 +79,15 @@ Afin de la rendre disponible pour les utilisateurs avec toutes ses informations 
 - Une fois la campagne créée, le système doit renvoyer une réponse contenant les informations complètes de la campagne.
 
 ---
+
+## Supprimer une campagne (DELETE /campaigns/campaign/:id)
+
+**En tant qu'administrateur,**
+Je souhaite supprimer une campagne,
+Afin de retirer les campagnes qui ne sont plus nécessaires.
+
+### Critères d'acceptation :
+- Le système doit supprimer la campagne correspondant à l'`ID` fourni en paramètre de la requête.
+- Si l'`ID` de la campagne n'existe pas, une erreur `404 doit être renvoyée.
+- En cas de suppression réussie, un message de confirmatio`n doit être retourné.
+- ne fois supprimée, la campagne ne doit plus être accessible dans la base de données.

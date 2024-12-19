@@ -19,3 +19,16 @@ exports.createCampaign = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+exports.deleteCampaign = async (req, res) => {
+    try {
+        const campaign = await Campaign.findByPk(req.params.id);
+        if (!campaign) return res.status(404).json({ error: 'Campaign not found' });
+
+        await campaign.destroy();
+
+        res.status(204).send();
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};

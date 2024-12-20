@@ -102,4 +102,21 @@ Afin de les consulter.
 
 ### Critères d'acceptation :
 - Le système doit récupérer l'ensemble des campagnes existantes et les renvoyer dans un tableau.
-- Si aucune campagne n'est présente dans la base de données, le système doit renvoyer un tableau vid
+- Si aucune campagne n'est présente dans la base de données, le système doit renvoyer un tableau vide.
+
+---
+
+### Récupérer une campagne (GET /campaigns/campaign/:id)
+
+**En tant qu'administrateur,**
+Je souhaite récupérer une campagne en particulier,
+Afin de consulter ses détails.
+
+## Critères d'acceptation :
+- Le système doit récupérer la campagne correspondant à l'`ID` fourni en paramètre de la requête.
+- Si l'`ID` de la campagne n'existe pas, une `erreur 404` doit être renvoyée.
+- Si la campagne a été trouvée, le système la retourne dans la réponse de la requête.
+
+---
+
+---

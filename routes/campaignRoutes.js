@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const campaignController = require('../controllers/campaignController');
 
+router.get('/', campaignController.getAllCampaigns);
 router.post('/', campaignController.createCampaign);
 router.delete('/campaign/:id', campaignController.deleteCampaign);
 

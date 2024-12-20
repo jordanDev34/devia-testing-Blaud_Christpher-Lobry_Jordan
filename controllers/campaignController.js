@@ -20,6 +20,15 @@ exports.createCampaign = async (req, res) => {
     }
 };
 
+exports.getAllCampaigns = async (req, res) => {
+    try {
+        const campaigns = await Campaign.findAll();
+        res.status(200).json(campaigns);
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+};
+
 exports.deleteCampaign = async (req, res) => {
     try {
         const campaign = await Campaign.findByPk(req.params.id);

@@ -51,7 +51,7 @@ Je souhaite récupérer un vaccin en particulier
 
 ---
 
-## Mettre à jour un vaccin (GET /vaccines/vaccine/:id)
+## Mettre à jour un vaccin (PUT /vaccines/vaccine/:id)
 
 **En tant qu'administrateur,**  
 Je veux mettre à jour les informations d'un vaccin, Afin de pouvoir modifier ses données si nécessaire.
@@ -118,5 +118,17 @@ Afin de consulter ses détails.
 - Si la campagne a été trouvée, le système la retourne dans la réponse de la requête.
 
 ---
+
+### Mettre à jour une campagne (PUT /campaigns/campaign/:id)
+
+**En tant qu'administrateur,**
+Je veux mettre à jour les informations d'une campagne,
+Afin de pouvoir modifier ses données si nécessaire.
+
+## Critères d'acceptation :
+- Le système met à jour la campagne sur la base de l'`ID` fourni en paramètre et du corps de la requête.
+- Si l'`ID` de la campagne n'existe pas, une erreur `404` doit être renvoyée.
+- Si les données saisies sont invalides ou incomplètes, le système renvoie une erreur `400` Bad Request avec un message détaillant les erreurs.
+- Si la campagne est trouvée et que les données saisies sont valides, elle est mise à jour et les modifications sont visibles dans la base de données.
 
 ---

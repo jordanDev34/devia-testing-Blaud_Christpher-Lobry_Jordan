@@ -88,9 +88,9 @@ Afin de retirer les campagnes qui ne sont plus nécessaires.
 
 ### Critères d'acceptation :
 - Le système doit supprimer la campagne correspondant à l'`ID` fourni en paramètre de la requête.
-- Si l'`ID` de la campagne n'existe pas, une erreur `404 doit être renvoyée.
-- En cas de suppression réussie, un message de confirmatio`n doit être retourné.
-- ne fois supprimée, la campagne ne doit plus être accessible dans la base de données.
+- Si l'`ID` de la campagne n'existe pas, une erreur `404` doit être renvoyée.
+- En cas de suppression réussie, un message de confirmation doit être retourné.
+- Une fois supprimée, la campagne ne doit plus être accessible dans la base de données.
 
 ---
 

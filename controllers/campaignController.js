@@ -1,4 +1,4 @@
-const Campaign = require('../models/campaignModel'); // Importer le modèle Campaign
+const Campaign = require('../models/campaignModel');
 
 exports.createCampaign = async (req, res) => {
     try {

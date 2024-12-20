@@ -41,6 +41,23 @@ describe('Campaign routes', () => {
     expect(res.body.length).to.equal(1);
   });
 
+  it('should return a campaign', async () => {
+    const campaign = await request.post('/campaigns').send({
+      name: 'Grand depistage',
+      eventDate: '2024-12-31',
+      location: 'Paris'
+    });
+
+    const res = await request.get(`/campaigns/campaign/${campaign.body.id}`);
+
+    expect(res.status).to.equal(200);
+    expect(res.body).to.have.property('id', campaign.body.id);
+    expect(res.body.name).to.equal('Grand depistage');
+    const formattedEventDate = new Date(res.body.eventDate).toISOString().split('T')[0];
+    expect(formattedEventDate).to.equal('2024-12-31');
+    expect(res.body.location).to.equal('Paris');
+  });
+
   it('should delete a campaign', async () => {
     const campaign = await request.post('/campaigns').send({
       name: 'Petit depistage',

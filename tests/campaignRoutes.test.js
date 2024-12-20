@@ -58,6 +58,47 @@ describe('Campaign routes', () => {
     expect(res.body.location).to.equal('Paris');
   });
 
+  it('should update a campaign', async () => {
+    const campaign = await request.post('/campaigns').send({
+      name: 'Moyen depistage',
+      eventDate: '2024-02-25',
+      location: 'Reims'
+    });
+
+    const res = await request.put(`/campaigns/campaign/${campaign.body.id}`).send({
+      name: 'Depistage annuel',
+      eventDate: '2024-01-30',
+      location: 'Bayonne'
+    });
+
+    expect(res.status).to.equal(200);
+    expect(res.body).to.have.property('id', campaign.body.id);
+    expect(res.body.name).to.equal('Depistage annuel');
+    const formattedEventDate = new Date(res.body.eventDate).toISOString().split('T')[0];
+    expect(formattedEventDate).to.equal('2024-01-30');
+    expect(res.body.location).to.equal('Bayonne');
+  });
+
+  it('should return an error during campaign update if data is invalid', async () => {
+    const campaign = await request.post('/campaigns').send({
+      name: 'Grand depistage',
+      eventDate: '2024-12-31',
+      location: 'Paris'
+    });
+
+
+    const res = await request.put(`/campaigns/campaign/${campaign.body.id}`).send({
+      name: 'deptistage mensuel', 
+      eventDate: '2024-11-30', 
+      location: 12345
+    });
+
+    expect(res.status).to.equal(400);
+    expect(res.body).to.have.property('error');
+    expect(res.body.error).to.include('Data is invalid');
+  });
+
+
   it('should delete a campaign', async () => {
     const campaign = await request.post('/campaigns').send({
       name: 'Petit depistage',

@@ -86,10 +86,9 @@ describe('Campaign routes', () => {
       location: 'Paris'
     });
 
-
     const res = await request.put(`/campaigns/campaign/${campaign.body.id}`).send({
-      name: 'deptistage mensuel', 
-      eventDate: '2024-11-30', 
+      name: 'deptistage mensuel',
+      eventDate: '2024-11-30',
       location: 12345
     });
 
@@ -97,7 +96,6 @@ describe('Campaign routes', () => {
     expect(res.body).to.have.property('error');
     expect(res.body.error).to.include('Data is invalid');
   });
-
 
   it('should delete a campaign', async () => {
     const campaign = await request.post('/campaigns').send({

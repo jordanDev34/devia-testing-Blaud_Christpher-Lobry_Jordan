@@ -91,3 +91,15 @@ Afin de retirer les campagnes qui ne sont plus nécessaires.
 - Si l'`ID` de la campagne n'existe pas, une erreur `404 doit être renvoyée.
 - En cas de suppression réussie, un message de confirmatio`n doit être retourné.
 - ne fois supprimée, la campagne ne doit plus être accessible dans la base de données.
+
+---
+
+## Récupérer toutes les campagnes (GET /campaigns)
+
+**En tant qu'administrateur**,
+Je souhaite récupérer la liste de toutes les campagnes existantes dans la base de données,
+Afin de les consulter.
+
+### Critères d'acceptation :
+- Le système doit récupérer l'ensemble des campagnes existantes et les renvoyer dans un tableau.
+- Si aucune campagne n'est présente dans la base de données, le système doit renvoyer un tableau vid

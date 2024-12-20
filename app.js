@@ -4,7 +4,8 @@ const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
 const userRoutes = require('./routes/userRoutes');
-const vaccineRoutes = require('./routes/vaccineRoutes')
+const vaccineRoutes = require('./routes/vaccineRoutes');
+const campaignRoutes = require('./routes/campaignRoutes');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(morgan('combined', { stream: accessLogStream }));
 
 // Routes
 app.use('/users', userRoutes);
-app.use('/vaccines', vaccineRoutes)
+app.use('/vaccines', vaccineRoutes);
+app.use('/campaigns', campaignRoutes);
 
 module.exports = app;
